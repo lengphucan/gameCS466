@@ -24,9 +24,9 @@ class Game:
 
             pressed = pygame.key.get_pressed()
             if pressed[pygame.K_LEFT]:  # sipka doleva
-                hero.x -= 5 if hero.x > 20 else 0  # leva hranice plochy
+                hero.x -= 2 if hero.x > 20 else 0  # leva hranice plochy
             elif pressed[pygame.K_RIGHT]:  # sipka doprava
-                hero.x += 5 if hero.x < width - 20 else 0  # prava hranice
+                hero.x += 2 if hero.x < width - 20 else 0  # prava hranice
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -41,7 +41,7 @@ class Game:
             for alien in self.aliens:
                 alien.draw()
                 alien.checkCollision(self)
-                if (alien.y > height):
+                if (alien.y > height-50):
                     self.lost = True
                     self.displayText("YOU DIED")
 
@@ -117,4 +117,4 @@ class Rocket:
 
 
 if __name__ == '__main__':
-    game = Game(1000, 800)
+    game = Game(600, 400)
